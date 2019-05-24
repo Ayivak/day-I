@@ -19,3 +19,28 @@ def get_circular_prime_count(limit):
     return counter
 #Provide different values for limit and test your program
 print(get_circular_prime_count(1000))
+
+
+#PF-Assgn-59
+def check_perfect_number(number):
+    t=number
+    s=0
+    for i in range(1,t):
+        if (t%i)==0:
+            s+=i
+    if s==t:
+        return True 
+    else:
+        return False#start writing your code here
+
+def check_perfectno_from_list(no_list):
+    l=[]
+    for i in range(0,len(no_list)):
+        if no_list[i]!=0 and check_perfect_number(no_list[i])==True:
+            l.append(no_list[i])
+        else:
+            continue
+    return l#start writing your code here
+
+perfectno_list=check_perfectno_from_list([18,6,4,2,1,28,0])
+print(perfectno_list)
