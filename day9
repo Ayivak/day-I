@@ -52,3 +52,49 @@ def remove_duplicates(value):
     #start writing your code here
     return "".join(OrderedDict.fromkeys(value))
 print(remove_duplicates("11223445566666ababzzz@@@123#*#*"))
+
+
+
+
+#PF-Assgn-61 incorrect
+def validate_name(name):
+    if len(name)<=15 and name.isalpha() and not name==" ":
+        return True 
+    else:
+        return False#Start writing your code here
+
+def validate_phone_no(phno):
+    if len(phno)==10 and phno.isdigit() and not phno=="9999999999":
+        return True 
+    else:
+        return False#Start writing your code here
+
+def validate_email_id(email_id):
+    #Start writing your code here
+    c=0
+    for i in range(0,len(email_id)):
+        if email_id[i]=="@" or email_id[i]=="." or email_id[i]=="c" or email_id[i]=="o" or email_id[i]=="@"
+    if "@gmail.com" or "@yahoo.com" or "@hotmail.com" in email_id and c==1:
+        return True 
+    else:
+        return False
+
+def validate_all(name,phone_no,email_id):
+    if(validate_name(name)==False):
+        print("Invalid Name")
+    if(validate_phone_no(phone_no)==False):
+        print("Invalid phone number")
+    if (validate_email_id(email_id)==False):
+        print("Invalid email id")
+    if(validate_name(name)==True and validate_phone_no(phone_no)==True and validate_email_id(email_id)==True):
+            print("All the details are valid")#Start writing your code here
+    # Use the below given print statements to display appropriate messages
+    # Also, do not modify them for verification to work
+    #print("Invalid Name")
+    #print("Invalid phone number")
+    #print("Invalid email id")
+    #print("All the details are valid")
+
+
+#Provide different values for name, phone_no and email_id and test your program
+validate_all("Tina", "9994599998", "tina@yahoo.com")
