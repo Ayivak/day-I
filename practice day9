@@ -9,3 +9,25 @@ def add_string(str1):
 
 str1="helping"
 print(add_string(str1))
+
+
+
+#PF-Prac-2
+def bracket_pattern(input_str):
+    c=0
+    d=0
+    if input_str[0]!=')':
+        for i in range(0,len(input_str)):
+            if(input_str[i]=="("):
+                c+=1 
+            else:
+                d+=1 
+        if c==d:
+            return True 
+        else:
+            return False 
+    else:
+        return False
+        
+input_str="(())()"
+print(bracket_pattern(input_str))
