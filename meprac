@@ -110,3 +110,24 @@ def seed_no(number,ref_no):
 number=45
 ref_no=1000
 print(seed_no(number,ref_no))
+
+
+
+#PF-Prac-8
+def calculate_net_amount(trans_list):
+    s=0 
+    r=0
+    net_amount=0
+    for i in trans_list:
+        a=[]
+        a=i.split(":")
+        if a[0]=="D":
+            s+=int(a[1])
+        if a[0]=="W":
+            r+=int(a[1])
+    net_amount=s-r
+    return net_amount
+       
+
+trans_list=["D:350","W:100","W:500","D:1000"]
+print(calculate_net_amount(trans_list))
