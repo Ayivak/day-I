@@ -90,3 +90,23 @@ def list123(nums):
         return False
 nums=[1,2,4,5]
 print(list123(nums))
+
+
+#PF-Prac-7
+def seed_no(number,ref_no):
+    p=number
+    l=number
+    while(l>0):
+        r=l%10
+        p*=r
+        l=l//10
+    if p==ref_no:
+        return True 
+    else:
+        return False
+     
+        #start writing your code here
+    
+number=45
+ref_no=1000
+print(seed_no(number,ref_no))
