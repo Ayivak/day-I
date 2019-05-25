@@ -98,3 +98,20 @@ def validate_all(name,phone_no,email_id):
 
 #Provide different values for name, phone_no and email_id and test your program
 validate_all("Tina", "9994599998", "tina@yahoo.com")
+
+
+
+
+#PF-Prac-1
+def add_string(str1):
+  if(len(str1)>=3):
+      if str1[-3:]=="ing":
+        d=str1.replace("str1[-3:]","ly")
+      else:
+        d=str1+"ing"#start writing your code here
+      
+  
+  return d
+
+str1="helping"
+print(add_string(str1))
