@@ -1,1 +1,11 @@
+#PF-Prac-1
+def add_string(str1):
+  if(len(str1)>2):
+      if str1[-3:]=="ing":
+        d=str1+"ly"
+      else:
+        d=str1+"ing"
+  return d
 
+str1="helping"
+print(add_string(str1))
