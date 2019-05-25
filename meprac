@@ -1,0 +1,11 @@
+#PF-Prac-3
+def create_new_dictionary(prices):
+    #start writing your code here
+    n={}
+    for i in prices:
+        if(prices[i]>200):
+            n.setdefault(i,prices[i])
+    return n
+
+prices = { 'ACME': 45.23,'AAPL': 612.78,'IBM': 205.55,'HPQ': 37.20,'FB': 10.75}
+print(create_new_dictionary(prices))
