@@ -58,3 +58,23 @@ def find_nine(nums):
     return False
 nums=[1,4,5,6]
 print(find_nine(nums))
+
+
+
+
+#PF-Prac-5
+def count_digits_letters(sentence):
+    result_list=[]
+    c=0 
+    d=0
+    for i in sentence:
+        if i.isalpha():
+            c+=1
+        if i.isdigit():
+            d+=1
+    result_list.append(c)
+    result_list.append(d)
+    return result_list
+
+sentence="ABCEFG"
+print(count_digits_letters(sentence))
