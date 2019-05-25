@@ -156,3 +156,23 @@ def string_both_ends(input_string):
 
 input_string="A"
 print(string_both_ends(input_string))
+
+
+
+#PF-Prac-11
+def find_upper_and_lower(sentence):
+    c=0
+    d=0
+    l=[]
+    #start writing your code here
+    for i in sentence:
+        if i.isupper():
+            c=c+1
+        if i.islower():
+            d=d+1
+    l.append(c)
+    l.append(d)
+    return l
+
+sentence="Hello world!"
+print(find_upper_and_lower(sentence))
