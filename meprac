@@ -9,3 +9,39 @@ def create_new_dictionary(prices):
 
 prices = { 'ACME': 45.23,'AAPL': 612.78,'IBM': 205.55,'HPQ': 37.20,'FB': 10.75}
 print(create_new_dictionary(prices))
+
+
+
+#PF-Prac-1
+def add_string(str1):
+  if(len(str1)>2):
+      if str1[-3:]=="ing":
+        d=str1+"ly"
+      else:
+        d=str1+"ing"
+  return d
+
+str1="helping"
+print(add_string(str1))
+
+
+
+#PF-Prac-2
+def bracket_pattern(input_str):
+    c=0
+    d=0
+    if input_str[0]!=')':
+        for i in range(0,len(input_str)):
+            if(input_str[i]=="("):
+                c+=1 
+            else:
+                d+=1 
+        if c==d:
+            return True 
+        else:
+            return False 
+    else:
+        return False
+        
+input_str="(())()"
+print(bracket_pattern(input_str))
