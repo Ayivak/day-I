@@ -123,3 +123,30 @@ def add_string(str1):
 
 str1="helping"
 print(add_string(str1))
+
+
+
+
+#PF-Assgn-58
+def validate_credit_card_number(card_number):
+    n=str(card_number)
+    l=[]
+    for i in n:
+        l.append(int(i))
+    for i in range(0,len(n),2):
+        l[i]=l[i]*2 
+        if l[i]>=10:
+            l[i]=l[i]//10+l[i]%10
+    if sum(l)%10==0:
+        return True 
+    else:
+        return False#start writing your code here
+
+card_number= 1456734512345698 #4539869650133101  #1456734512345698 # #5239512608615007
+result=validate_credit_card_number(card_number)
+if(result):
+    print("credit card number is valid")
+else:
+    print("credit card number is invalid")
+    
+
