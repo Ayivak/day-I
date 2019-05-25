@@ -176,3 +176,19 @@ def find_upper_and_lower(sentence):
 
 sentence="Hello world!"
 print(find_upper_and_lower(sentence))
+
+
+#PF-Prac-12
+def generate_sentences(subjects,verbs,objects):
+    r=verbs[::-1]
+    sentence_list=[]
+    for i in subjects:
+        for j in r:
+            for k in objects:
+                sentence_list.append(i+" "+j+" "+k)
+    return " \n".join(sentence_list) 
+
+subjects=["I","You"]
+verbs=["love", "play"]
+objects=["Hockey","Football"]
+print(generate_sentences(subjects,verbs,objects))
