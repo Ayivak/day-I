@@ -213,3 +213,18 @@ def find_five_digit():
 	print(s)
 
 find_five_digit()
+
+
+
+#PF-Prac-15
+def check_22(num_list):
+    c=0
+    for i in range(0,len(num_list)-1):
+        if num_list[i]==2 and num_list[i+1]==2:
+            c=1
+    if c==1:
+        return True 
+    else:
+        return False#start writing your code here
+        
+print(check_22([3,4,5,6]))
