@@ -95,3 +95,32 @@ def sing_99_bottles():
        print(int(i-1),end=" ")
        print("bottles of beer on the wall.")
 sing_99_bottles()
+
+
+
+
+#PF-Prac-29
+import itertools
+def exchange_list(number_list):
+    #start writing your code here
+    t=number_list
+    number_list=[]
+    d=len(t)//2
+    l=t[d:]
+    l=l[::-1]
+    g=t[:d]
+    number_list.extend(l)
+    number_list.extend(g)
+    return number_list
+     
+     #import operator
+
+a = [1,2]
+b = ['a','b']
+#c = list(reduce(operator.add,zip(a,b))) # slow.
+# better.
+number_list=[1,2,3,4,5,6]
+print(exchange_list(number_list))
+
+
+
