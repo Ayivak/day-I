@@ -54,3 +54,20 @@ def list_of_count(word_list):
 
 word_list=["COme","here"]
 print(list_of_count(word_list))
+
+
+
+#PF-Prac-26
+def check_occurence(string):
+    c=0
+    d=0
+    string=string.upper()
+    #start writing your code here
+    c=string.count("MAT")
+    d=string.count("JET")
+    if c==d:
+        return True 
+    else:
+        return False
+string="Jet on the Mat but mat is too long"
+print(check_occurence(string))
