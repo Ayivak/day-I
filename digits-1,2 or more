@@ -1,0 +1,17 @@
+#PF-Prac-13
+def close_number(num1,num2,num3):
+    #start writing your code here
+    a=abs(num1-num2)
+    b=abs(num2-num3)
+    c=abs(num1-num3)
+    if a==1 and b>=2 and c>=2:
+        return True
+    if b==1 and c>=2 and a>=2:
+        return True
+    if c==1 and a>=2 and b>=2:
+        return True
+    return False
+        
+    
+num1,num2,num3=map(int,input().split())
+print(close_number(num1,num2,num3))
