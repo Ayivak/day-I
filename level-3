@@ -1,0 +1,207 @@
+PF-Prac-17
+train_list=[
+{"train_no":16453,"name":"Prasanti Express","from":"SBC","to":"BBS","days_of_run":['Mo','We','Th'],"sleeper_fare":600,"ac_fare": 987},
+{"train_no":25627,"name":"Karnataka Express","from":"SBC","to":"DEC","days_of_run":['Su','Tu'],"sleeper_fare":1600,"ac_fare": 2500},
+{"train_no":22642,"name":"Trivandrum SF Express","from":"VSKP","to":"TVM","days_of_run":['Mo','Tu','We','Th','Fr','Sa'],"sleeper_fare":800,"ac_fare": 1256},
+{"train_no":22905,"name":"Okha Howrah Express","from":"ST","to":"KOAA","days_of_run":['We','Sa'],"sleeper_fare":987,"ac_fare": 2879}]
+
+def get_train_name (train_no):
+    #start writing your code here
+    train_name = ''
+    for items in train_list:
+        if items['train_no'] == train_no:
+            train_name = items["name"]
+    if len(train_name) > 0:
+        return train_name
+    else:
+        return "Invalid Train_no"
+
+def get_trains_for_day(day_of_run):
+    list1 = []
+    for items in train_list:
+        temp_list = items["days_of_run"]
+        if day_of_run in temp_list:
+            list1.append(items['train_no'])
+    return list1
+    #start writing your code here
+
+def get_total_fare(train_no,passenger_dict):
+    sleeper_cost = 0
+    ac_cost = 0
+    for items in train_list:
+        if  items["train_no"] == train_no:
+            ac_cost = items["ac_fare"] * passenger_dict["ac"]
+            sleeper_cost = items['sleeper_fare'] * passenger_dict["sleeper"]
+    return ac_cost + sleeper_cost
+    
+print(get_train_name(25627))
+print(get_trains_for_day("Mo"))
+print(get_total_fare(25627,{"sleeper":10, "ac":10}))
+
+
+
+
+
+#PF-Tryout
+import pandas as pd
+def generate_schedule(module_list,duration_list,start_date):   
+    #start writing your code here
+    for duration in duration_list:
+        if duration >10:
+            return -1 
+        else:    
+            if "PF" in module_list:
+                end_date = pd.to_datetime(start_date) + pd.DateOffset(days=duration)
+                start_date = end_date
+                print ('PF - Start Date:',start_date,'End Date:',end_date)
+            elif "OOP" in module_list:
+                end_date = pd.to_datetime(start_date) + pd.DateOffset(days=duration)
+                print ('PF - Start Date:',start_date,'End Date:',end_date)
+
+    
+module_list=["PF","OOP"]
+duration_list=[7,8]
+start_date="01-03-2016"
+generate_schedule(module_list, duration_list, start_date)
+
+
+
+#20
+def check_end(ducci):
+    return all(i == 0 for i in ducci)
+
+def compute(ducci):
+    copy = ducci[0]
+    new_seq = ducci
+    for i in range(0,len(ducci)-1):
+        new_seq[i] = abs(ducci[i] - ducci[i+1])
+    new_seq[len(ducci)-1] = abs(ducci[len(ducci)-1] - copy)
+    return tuple(new_seq)
+
+def ducci_sequence(ducci,n):
+    check_dupl = set()
+    steps = 0
+    while(check_end(ducci) != True):
+        ducci = compute(list(ducci))
+        if(tuple(ducci) in check_dupl):
+            break
+        else:
+            check_dupl.add(ducci)
+            steps += 1
+    final_list = list(check_dupl)
+    return final_list[n]
+
+ducci_element=ducci_sequence([0, 653, 1854, 4063] , 3)
+print(ducci_element)
+
+
+
+    
+#PF-Prac-41
+def get_edges(pollsters_stateedge_dict,state):
+    new_dict = {}
+    for state in pollsters_stateedge_dict: # or data.keys()
+        state_lst = []
+        for state1 in pollsters_stateedge_dict[state]: # or data[poll].keys()
+             state_lst.append(state1)
+             new_dict[state] = state_lst
+    return new_dict
+
+def find_pollster_states(pollsters_stateedge_dict):
+    wa_results = []
+    for pollster in pollsters_stateedge_dict: # or data.keys()
+        if 'WA' in pollsters_stateedge_dict[pollster]: # or data[pollster].keys()
+            edge = pollsters_stateedge_dict[pollster]['WA']
+            t = (pollster,edge)
+            wa_results.append(t)
+        else:
+            edge = None
+            tup = (pollster, edge)
+            wa_results.append(tup)
+    return wa_results
+
+pollsters_stateedge_dict = { 
+              "Gallup": { "WA": 7, "CA": 15, "UT": -30 }, 
+              "SurveyUSA": { "CA": 14, "CO": 2, "CT": 13, "FL": 0 }, 
+              "Omniscient": { "AK": -14.0, "WA": -2.3, "CA": 20.9 }
+             } 
+state='WA'
+print("Pollsters, States and its edge details:",pollsters_stateedge_dict)
+print("Given State:",state)
+output=get_edges(pollsters_stateedge_dict,state)
+print("Pollster Edge details for the given state:", output)  
+
+output1=find_pollster_states(pollsters_stateedge_dict)
+print("Pollster and their entire state details:",output1)
+
+
+
+#PF-Prac-43
+
+def find_promoted_vp(presidents_dict):
+    prezs = set()
+    for pres_rec in presidents_dict:
+        prezs.add(pres_rec['name'])
+    vps = set()
+    for pres_rec in presidents_dict:
+        vps.add(pres_rec['vp'])
+    promoted_vp_list = set()
+    for vp in vps:
+        if vp in prezs:
+            promoted_vp_list.add(vp)
+    return promoted_vp_list
+
+def find_presidents_vp(presidents_dict,duration):
+    overall_promoted = find_promoted_vp(presidents_dict)
+    result = []
+    duration = duration.split('-')
+    start = int(duration[0])
+    end = int(duration[1])
+    for items in presidents_dict:
+        if items['vp'] in overall_promoted:
+            start1 = items['period'].split('-')
+            end1  = int(start1[1])
+            start1 = int(start1[0])
+            if start1 >= start and end1 <= end:
+                result.append(items['vp'])
+    return result
+ 
+
+
+
+presidents_dict=[{'name':'George Washington', 'vp':'John Adams','period':'1990-1993'}, 
+                 {'name':'John Adams', 'vp':'Thomas Jefferson','period':'1994-1996'}, 
+                 {'name':'Zachary Taylor', 'vp':'Millard Fillmore','period':'1997-1999'}, 
+                 {'name':'Dwight D. Eisenhower', 'vp':'Richard Nixon','period':'1999-2001'}, 
+                 {'name':'Richard Nixon', 'vp':'Spiro Agnew','period':'2001-2002'}, 
+                 {'name':'Richard Nixon', 'vp':'Gerald Ford','period':'2002-2004'}] 
+
+print("The president and vice president details:",presidents_dict)
+output=find_promoted_vp(presidents_dict)
+print("The list of vice presidents who also got promoted as presidents:",output)
+duration='1999-2005'
+print("The president and vice president details:",presidents_dict)
+print("Given duration:",duration)
+output1=find_presidents_vp(presidents_dict, duration)
+print("The list of vice presidents who also got promoted as presidents in the given duration:",output1)
+
+
+
+
+
+
+
+
+#PF-Prac-45
+from difflib import SequenceMatcher 
+
+
+def longest_common_substring(string1, string2):
+    seqMatch = SequenceMatcher(None,string1,string2) 
+    match = seqMatch.find_longest_match(0, len(string1), 0, len(string2)) 
+    return (string1[match.a: match.a + match.size])
+
+output=longest_common_substring("discatenation","concatenation")
+print("The longest overlap of characters between string1 and string2:",output)
+output1=longest_common_substring("assured","measured")
+print("The longest overlap of characters between string1 and string2:",output1)
