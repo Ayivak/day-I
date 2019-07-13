@@ -1,0 +1,37 @@
+1.
+#code
+def g(n):
+    if n>0:
+        g(n//2)
+        print(n%2,end="")
+a=input().split(" ")
+b=int(a[0])
+c=int(a[1])
+d=int(b+c)
+g(d)
+
+
+
+2.
+'''
+# Sample code to perform I/O:
+
+name = input()                  # Reading input from STDIN
+print('Hi, %s.' % name)         # Writing output to STDOUT
+
+# Warning: Printing unwanted or ill-formatted data to output will cause the test cases to fail
+'''
+
+# Write your code here
+t=int(input())
+for i in range(0,t):
+    s=input().split(" ")
+    n=int(s[0])
+    k=int(s[1])
+    c=0
+    a=list(map(int,input().split(" ")))
+    a.sort()
+    if a[0]<=k:
+        print(k-a[0])
+    else:
+        print(0)
