@@ -1,0 +1,24 @@
+a=input().split(" ")
+m=int(a[0])
+n=int(a[1])
+l=[]
+p=[]
+c=0
+g=0
+t=0
+for i in range(0,m):
+    l=list(map(int,input().split(" ")))
+    p.append(l)
+    l=[]
+k=int(input())
+for i in range(0,m):
+    for j in range(0,n):
+        if p[i][j]==k:
+            c=i
+            g=j
+            t=1
+            break
+if t==0:
+    print(-1,-1)
+if t==1:
+    print(c,g)
